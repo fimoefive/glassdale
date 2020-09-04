@@ -42,7 +42,8 @@ eventHub.addEventListener("officerSelected", event => {
 
 // Render ALL criminals initally
 export const CriminalList = () => {
-    getCriminals().then(() => {
+    getCriminals()
+    .then(() => {
         const appStateCriminals = useCriminals();
         //console.log('appStateCriminals', appStateCriminals);
         render(appStateCriminals);
