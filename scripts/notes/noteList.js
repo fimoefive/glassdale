@@ -8,10 +8,28 @@ const eventHub = document.querySelector(".container")
 
 const render = (notes) => {
     const criminals = useCriminals()
+    
+   let HTMLArray = notes.map((noteObj) => {
+        return NoteHTMLConverter(noteObj);
+   })
+   console.log("HTMLArray", HTMLArray);
+    contentTarget.innerHTML = HTMLArray.join("")
+   };
+   /*
+   const render = (notes) => {
+    const criminals = useCriminals()
     contentTarget.innerHTML = notes.map((noteObject) => {
-        return NoteHTMLConverter(noteObject)
-    }).join("");
+            return NoteHTMLConverter(noteObject)
+        }).join("");
+}
+
+let HTMLArray = appStateCriminals.map(singleCrimianl => {
+    return CriminalHTML(singleCrimianl);
+})
+// console.log("HTMLArray", HTMLArray);
+targetElement.innerHTML = HTMLArray.join("")
 };
+*/
 
 export const NoteList = () => {
     getNotes()
