@@ -2,7 +2,6 @@
 
 const eventHub = document.querySelector("#main")
 
-
 export const NoteHTMLConverter = (noteObject) => {
     return `
         <section class="note">
