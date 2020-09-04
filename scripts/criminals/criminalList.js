@@ -7,7 +7,7 @@ const eventHub = document.querySelector(".container");
 eventHub.addEventListener("crimeChosen", event => {
     // Use the property you added to the event detail.
     const contentTarget =  document.querySelector(".officerSelect")
-    console.log("which officer is selected?", contentTarget.value);
+    // console.log("which officer is selected?", contentTarget.value);
 
     if (event.detail.crimeThatWasChosen !== "0") {
         /*

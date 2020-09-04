@@ -27,11 +27,14 @@ eventHub.addEventListener("click", clickEvent => {
 const render = (criminalArray) => {
     contentTarget.innerHTML = `
         Put some input fields and prompts here
+        <input type="text">
+        <br>
+        <input type="text">
     <h3>New Note Details</h3>
     <textarea id="noteForm--text" placeholder="Put a note here"></textarea>
 
     <select class="dropdown" id="crimeSelect">
-    <option value="0">Please select a Officer..</option>
+    <option value="0">Please select a Criminal..</option>
     ${
         criminalArray.map(criminalObj => {
             return `
