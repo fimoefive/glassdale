@@ -3,26 +3,25 @@ import { CriminalHTML } from "./criminals.js";
 
 const eventHub = document.querySelector(".container");
 
-
 // Listen for the custom event you dispatched in ConvictionSelect
-    eventHub.addEventListener("crimeChosen", event => {
+eventHub.addEventListener("crimeChosen", event => {
     // Use the property you added to the event detail.
 
-    if (event.detail.crimeThatWasChosen !== "0"){
-        
+    if (event.detail.crimeThatWasChosen !== "0") {
+
         /*
             Filter the criminals application state down to the people that committed the crime
         */
-       const matchingCriminals = useCriminals().filter(criminal => {
-           console.log(criminal.conviction, event.detail.crimeThatWasChosen);
-                    return criminal.conviction === event.detail.crimeThatWasChosen
-                });
+        const matchingCriminals = useCriminals().filter(criminal => {
+            console.log(criminal.conviction, event.detail.crimeThatWasChosen);
+            return criminal.conviction === event.detail.crimeThatWasChosen
+        });
         /*
             Then invoke render() and pass the filtered collection as
             an argument
         */
-       console.log(matchingCriminals);
-       render(matchingCriminals);
+        console.log(matchingCriminals);
+        render(matchingCriminals);
     }
 });
 
@@ -32,7 +31,7 @@ eventHub.addEventListener("officerSelected", event => {
 
     // How can you get the criminals that were arrested by that officer?
     const criminals = useCriminals()
-    criminals.???(
+    criminals.??? (
         criminalObject => {
             if (criminalObject.??? === officerName) {
                 return true
@@ -45,12 +44,12 @@ eventHub.addEventListener("officerSelected", event => {
 export const CriminalList = () => {
     getCriminals().then(() => {
         const appStateCriminals = useCriminals();
-    //console.log('appStateCriminals', appStateCriminals);
+        //console.log('appStateCriminals', appStateCriminals);
         render(appStateCriminals);
     })
 };
 
- const render = appStateCriminals => {
+const render = appStateCriminals => {
     const targetElement = document.querySelector(".criminalsContainer");
 
     let HTMLArray = appStateCriminals.map(singleCrimianl => {

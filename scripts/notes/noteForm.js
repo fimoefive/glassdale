@@ -1,22 +1,26 @@
 import { getCriminals, useCriminals } from "../criminals/criminalProvider.js";
+import {saveNote} from "./noteProvider.js";
 
 const eventHub = document.querySelector(".container");
-const contentTarget = document.querySelector(".noteFormContainer")
+const contentTarget = document.querySelector(".noteFormContainer");
 
 eventHub.addEventListener("click", clickEvent => {
-    if(clickEvent.target.id === "saveNote"){
+    if (clickEvent.target.id === "saveNote") {
+
         const noteContentent = document.querySelector("#noteForm--text")
         const noteCriminal = document.querySelector("#noteForm--criminal")
 
-        if(noteCriminal.value !== "0"){
+        if (noteCriminal.value !== "0") {
             const newNote = {
-            noteText: noteContentent.value,
-            suspect: noteCriminal.value,
-            date: Date.now()
+                noteText: noteContentent.value,
+                suspect: noteCriminal.value,
+                date: Date.now()
+            }
+            saveNote(newNote);
+
+        } else {
+            window.alert("Choose a Suspect");
         }
-    } else {
-        window.alert("Choose a Suspect");
-    }
     }
 });
 
@@ -29,10 +33,11 @@ const render = (criminalArray) => {
     <select class="dropdown" id="crimeSelect">
     <option value="0">Please select a Officer..</option>
     ${
-        criminalArray.map(convictionObj => {
+        criminalArray.map(criminalObj => {
             return `
-            <option value="${convictionObj.name}">${convictionObj.name}</option>`}).join("")
-    }
+            <option value="${criminalObj.name}">${criminalObj.name}</option>`
+        }).join("")
+        }
 </select>
         <button id="saveNote">Save Note</button>
     `
@@ -40,7 +45,7 @@ const render = (criminalArray) => {
 
 export const NoteForm = () => {
     getCriminals()
-    .then(() => {
-        render(useCriminals());
-    })
+        .then(() => {
+            render(useCriminals());
+        })
 };

@@ -1,24 +1,8 @@
 console.log("is this working")
 import { useConvictions, getConvictions } from "./ConvictionProvider.js";
 
-/*
-    const addConvictionToDom = (convictionArray) => {
-        const contentTarget = document.querySelector(".filters__crime");
-        let HTMLArray = convictionArray.map(singleConviction => {
-            return ConvictionHTML(singleConviction);
-        })
-        console.log("HTMLArray", HTMLArray);
-        contentTarget.innerHTML = HTMLArray.join("");
-        /*
-            Use interpolation here to invoke the map() method on
-            the convictionsCollection to generate the option elements.
-            Look back at the example provided above.
-        */ 
-    // };
-   
-
-    // Which element in your HTML contains all components?
-    // That's your Event Hub. Get a reference to it here.
+// Which element in your HTML contains all components?
+// That's your Event Hub. Get a reference to it here.
 const eventHub = document.querySelector(".container")
 const contentTarget = document.querySelector(".filters__crime")
 
@@ -42,26 +26,26 @@ eventHub.addEventListener("change", event => {
 });
 
 
-     const renderHTML = (convictionArray) => {
-        contentTarget.innerHTML = `
+const renderHTML = (convictionArray) => {
+    contentTarget.innerHTML = `
             <select class="dropdown" id="crimeSelect">
                 <option value="0">Please select a crime...</option>
                 ${
-                    convictionArray.map(convictionObj => {
-                        const conviction = convictionObj.name
-                    return `<option value=${conviction}> ${conviction}</option>`})
-                }
+        convictionArray.map(convictionObj => {
+            const conviction = convictionObj.name
+            return `<option value=${conviction}> ${conviction}</option>`
+        })
+        }
             </select>
             `
-    };
-
+};
 //     render(convictions)
 // }
 export const ConvictionList = () => {
     getConvictions()
         .then(() => {
-    const convictions = useConvictions();
-    // console.log("convictionArray", convictions);
-    renderHTML(convictions);
-    })
+            const convictions = useConvictions();
+            // console.log("convictionArray", convictions);
+            renderHTML(convictions);
+        })
 };

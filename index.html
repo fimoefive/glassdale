@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Glassdale PD</title>
@@ -11,27 +12,27 @@
   <nav></nav>
   <header></header>
 
-  <main class="container">
+  <main class="container" id="main">
     <header>
-        <div class="filters">
-            <div class="filter filters__crime"></div>
-            <div class="filter filters__incarceration"></div>
-            <div class="filter filters__officer"></div>
-        </div>
+      <div class="filters">
+        <div class="filter filters__crime"></div>
+        <div class="filter filters__incarceration"></div>
+        <div class="filter filters__officer"></div>
+      </div>
     </header>
-  
+
     <h3>Notes</h3>
-    <article class="noteFormContainer"></article>
-<article class="criminalsContainer"></article>
+    <div class="noteFormContainer"></div>
+    <div class="criminalsContainer"></div>
+
+    <h3>Criminals</h3>
+    <section class="criminalsContainer" id="crimeSelect"></section>
 
     <h3>Officers</h3>
     <section class="officersContainer"></section>
 
-    <h3>Criminals</h3>
-    <select class="criminalsContainer" id="crimeSelect"></select>
-
     <article class="convictionsContainer"></article>
-</main>
+  </main>
 
 
   <footer></footer>

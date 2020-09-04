@@ -1,4 +1,5 @@
 // useNotes- makes copy of array of notes and returns
+let notes = [];
 
 const eventHub = document.querySelector(".container")
 
@@ -8,7 +9,7 @@ const dispatchStateChangeEvent = () => {
     eventHub.dispatchEvent(noteStateChangedEvent)
 };
 
-const getNotes = () => {
+export const getNotes = () => {
     return fetch('http://localhost:8088/notes')
         .then(response => response.json())
         .then(parsedNotes => {
@@ -28,8 +29,8 @@ export const saveNote = noteObj => {
         },
         body: JSON.stringify(noteObj)
     })
-    .then((getNotes) => {
-        getNotes()
-    })
-    .then(dispatchStateChangeEvent)
+        .then((getNotes) => {
+            getNotes()
+        })
+        .then(dispatchStateChangeEvent)
 };

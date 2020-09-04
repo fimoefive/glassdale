@@ -20,16 +20,15 @@ eventHub.addEventListener("officerChosen", changeEvent => {
         eventHub.dispatchEvent(officerEvent)
     }
 });
-    
+
 export const OfficerList = () => {
     getOfficers()
-    .then(() => {
-        const officerArray = useOfficers();
-        // console.log('officerArray', officerArray);
-        renderOfficers(officerArray);
-    })
+        .then(() => {
+            const officerArray = useOfficers();
+            // console.log('officerArray', officerArray);
+            renderOfficers(officerArray);
+        })
 };
-
 
 const renderOfficers = (officerArray) => {
     const targetElement = document.querySelector(".officersContainer");
