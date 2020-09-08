@@ -6,7 +6,7 @@ import { CriminalList } from "./criminals/criminalList.js";
 import { ConvictionList } from "./conviction/ConvictionSelect.js";
 import { NoteForm } from "./notes/noteForm.js";
 import {NoteList} from "./notes/noteList.js";
-
+import {witnessList} from "./witness/witnessList.js";
 
 OfficerList();
 OfficerSelect();
@@ -14,3 +14,4 @@ CriminalList();
 ConvictionList();
 NoteForm();
 NoteList();
+witnessList();
