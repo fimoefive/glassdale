@@ -26,8 +26,7 @@ eventHub.addEventListener("click", clickEvent => {
 
 const render = (criminalArray) => {
     contentTarget.innerHTML = `
-        Put some input fields and prompts here
-        <input type="text">
+        
         <br>
         <input type="text">
     <h3>New Note Details</h3>

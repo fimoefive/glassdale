@@ -3,6 +3,7 @@ import { getOfficers, useOfficers } from "./officerProvider.js";
 const eventHub = document.querySelector(".container");
 
 eventHub.addEventListener("officerChosen", changeEvent => {
+    
     if (changeEvent.target.id === "officerSelect") {
         // Get the name of the selected officer
         const selectedOfficer = changeEvent.target.value
@@ -16,6 +17,7 @@ eventHub.addEventListener("officerChosen", changeEvent => {
         })
         // renderOfficers(officerEvent);
         // Dispatch event to event hub
+        
         eventHub.dispatchEvent(officerEvent)
     }
 });

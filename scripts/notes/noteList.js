@@ -22,13 +22,6 @@ const render = (notes) => {
             return NoteHTMLConverter(noteObject)
         }).join("");
 }
-
-let HTMLArray = appStateCriminals.map(singleCrimianl => {
-    return CriminalHTML(singleCrimianl);
-})
-// console.log("HTMLArray", HTMLArray);
-targetElement.innerHTML = HTMLArray.join("")
-};
 */
 
 export const NoteList = () => {

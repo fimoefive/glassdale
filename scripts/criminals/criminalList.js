@@ -6,7 +6,7 @@ const eventHub = document.querySelector(".container");
 // Listen for the custom event you dispatched in ConvictionSelect
 eventHub.addEventListener("crimeChosen", event => {
     // Use the property you added to the event detail.
-    const contentTarget =  document.querySelector(".officerSelect")
+    const contentTarget = document.querySelector(".officerSelect")
     // console.log("which officer is selected?", contentTarget.value);
 
     if (event.detail.crimeThatWasChosen !== "0") {
@@ -30,6 +30,7 @@ eventHub.addEventListener("crimeChosen", event => {
 
 // const officerEvent = useOfficers().filter(officer => {
 eventHub.addEventListener("officerSelected", event => {
+    debugger
     if (event.detail.officerThatWasChosen !== "0") {
         
     // Filter the officers application state down to the people that committed the crime
@@ -38,6 +39,7 @@ eventHub.addEventListener("officerSelected", event => {
             console.log(criminal.conviction, event.detail.crimeThatWasChosen);
             return criminal.arrestingOfficer === event.detail.officerThatWasChosen
         });
+        
         console.log(matchingCriminals);
         render(matchingCriminals);
     } else {
