@@ -1,37 +1,32 @@
 //map over an array and display all notes from Note.js
 import { getNotes, useNotes } from "./noteProvider.js";
 import { NoteHTMLConverter } from "./note.js";
-import { useCriminals } from "../criminals/criminalProvider.js";
+import { useCriminals, getCriminals } from "../criminals/criminalProvider.js";
 
-const contentTarget = document.querySelector(".noteListContainer")
-const eventHub = document.querySelector(".container")
-
-const render = (notes) => {
-    const criminals = useCriminals()
-    
-   let HTMLArray = notes.map((noteObj) => {
-        return NoteHTMLConverter(noteObj);
-   })
-   console.log("HTMLArray", HTMLArray);
-    contentTarget.innerHTML = HTMLArray.join("")
-   };
-   /*
-   const render = (notes) => {
-    const criminals = useCriminals()
-    contentTarget.innerHTML = notes.map((noteObject) => {
-            return NoteHTMLConverter(noteObject)
-        }).join("");
-}
-*/
-
-export const NoteList = () => {
-    getNotes()
-        .then(useNotes)
-        .then(render)
-};
-
+const contentTarget = document.querySelector(".noteListContainer");
+const eventHub = document.querySelector(".container");
 
 eventHub.addEventListener("noteStateChanged", () => {
     const newNotes = useNotes()
-    render(newNotes)
+    render(newNotes, useCriminals())
 });
+
+const render = (notes, suspects) => {
+    contentTarget.innerHTML = notes.map((noteObj) => {
+        noteObj.suspectObj = suspects.find(suspect => {
+            return suspect.id === parseInt(noteObj.suspect.Id)
+         
+        })
+            return NoteHTMLConverter(noteObj)
+    }).join("");
+};
+
+export const NoteList = () => {
+    getNotes()
+        .then(getCriminals)
+        .then(() => {
+            const notes = useNotes()
+            const suspects = useCriminals()
+            render(notes, suspects)
+        })
+};
